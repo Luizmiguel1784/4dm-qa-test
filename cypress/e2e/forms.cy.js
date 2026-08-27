@@ -1,5 +1,7 @@
 describe("Formulario", () => {
   it("teste", () => {
+   
+   
     cy.login("4DM@gmail.com", "4DM");
     cy.contains("button", "Formulários").should("be.visible").click("");
     cy.contains("h1", "Consultoria").should("be.visible");
@@ -28,6 +30,10 @@ describe("Formulario", () => {
         .should("be.checked");
     });
 
+    cy.get('input[type="file"]').selectFile('./Cypress/fixtures/header.png', {force:true})
+    cy.contains('span','header.png').should('be.visible')
+
+
     cy.get("#document").type("10033051488");
     cy.get("#details").type("Muito foda");
 
@@ -43,5 +49,7 @@ describe("Formulario", () => {
    // cy.get("#technologies").type("Java");
     cy.contains("label", "Li e aceito os termos de uso *").click();
     cy.contains("button", "Enviar formulário").click();
+
+    cy.contains("button","Fechar").click();
   });
 });
