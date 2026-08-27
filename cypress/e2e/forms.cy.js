@@ -52,4 +52,14 @@ describe("Formulario", () => {
 
     cy.contains("button","Fechar").click();
   });
+  it("testeEmBranco",()=>{
+     cy.login("4DM@gmail.com", "4DM");
+     cy.contains("button", "Formulários").should("be.visible").click("");
+     cy.contains("button", "Enviar formulário").click();
+     cy.contains('Digite nome e sobrenome').should("be.visible")
+     cy.contains('Informe um email válido').should("be.visible")
+     cy.contains('Você precisa aceitar os termos de uso').should("be.visible")
+
+
+  })
 });
